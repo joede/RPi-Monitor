@@ -94,13 +94,14 @@ SanitizeValue() {
 	# return empty values as empty and keep thermal values in the range of 0°C-100°C
 	if [ "X${1}" = "X" ]; then
 		echo ""
-	fi
-	if [ ${1} -lt 0 ]; then
-		echo -n 0
-	elif [ ${1} -gt 100000 ]; then
-		echo -n 100000
 	else
+	    if [ ${1} -lt 0 ]; then
+		echo -n 0
+	    elif [ ${1} -gt 100000 ]; then
+		echo -n 100000
+	    else
 		echo -n ${1}
+	    fi
 	fi
 } # SanitizeValue
 
